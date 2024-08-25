@@ -1,78 +1,43 @@
-# Análisis de Datos de Instacart
+# Análisis de Datos de Pedidos de Instacart
 
-## Descripción del Proyecto
+Este proyecto consiste en un análisis exploratorio de datos utilizando un conjunto de datos de pedidos de Instacart, una plataforma de entregas de comestibles en línea. El objetivo es limpiar los datos y explorar los hábitos de compra de los clientes de Instacart a través de un análisis detallado.
 
-Este proyecto se centra en el análisis de datos de Instacart, una plataforma de entregas de comestibles. El objetivo es limpiar los datos proporcionados y preparar un informe detallado sobre los hábitos de compra de los clientes de Instacart.
+## Datasets Utilizados
 
-Los datos incluyen cinco archivos CSV con información sobre pedidos, productos, pasillos y departamentos. A través de este análisis, se busca obtener información valiosa sobre el comportamiento de compra de los usuarios y cómo se distribuyen los productos y pedidos.
+- **instacart_orders.csv**: Información sobre cada pedido realizado en la plataforma.
+- **products.csv**: Detalles sobre los productos disponibles en Instacart.
+- **order_products.csv**: Información sobre los productos incluidos en cada pedido.
+- **aisles.csv**: Categorías de pasillos donde se encuentran los productos.
+- **departments.csv**: Departamentos de víveres a los que pertenecen los productos.
 
-## Datos
+## Pasos Realizados
 
-El conjunto de datos se compone de los siguientes archivos:
+### 1. Preprocesamiento de Datos
+- **Verificación y Corrección de Tipos de Datos**: Aseguramos que todas las columnas tengan los tipos de datos correctos, como enteros para las columnas de ID.
+- **Tratamiento de Valores Ausentes**: Identificación y manejo de valores ausentes, incluyendo la justificación de los métodos utilizados para completarlos o eliminarlos.
+- **Eliminación de Duplicados**: Detección y eliminación de registros duplicados para asegurar la integridad de los datos.
 
-- **`instacart_orders.csv`**: Información sobre cada pedido realizado en Instacart.
-  - `order_id`: Identificador único del pedido.
-  - `user_id`: Identificador único del cliente.
-  - `order_number`: Número de veces que el cliente ha hecho un pedido.
-  - `order_dow`: Día de la semana en que se realizó el pedido (0 si es domingo).
-  - `order_hour_of_day`: Hora del día en que se realizó el pedido.
-  - `days_since_prior_order`: Número de días desde el pedido anterior del cliente.
+### 2. Análisis Exploratorio
 
-- **`products.csv`**: Información sobre cada producto disponible en Instacart.
-  - `product_id`: Identificador único del producto.
-  - `product_name`: Nombre del producto.
-  - `aisle_id`: Identificador único del pasillo.
-  - `department_id`: Identificador único del departamento.
+#### A. Verificación y Visualización Inicial
+- **Verificación de Rango de Valores**: Aseguramos que las columnas `order_hour_of_day` y `order_dow` tengan valores razonables.
+- **Gráfico de Pedidos por Hora del Día**: Visualización del número de pedidos realizados en cada hora del día.
+- **Gráfico de Pedidos por Día de la Semana**: Análisis de los días en que los clientes realizan más pedidos.
+- **Distribución del Tiempo entre Pedidos**: Visualización y comentario sobre el tiempo que los clientes esperan para hacer su próximo pedido.
 
-- **`order_products.csv`**: Información sobre los productos incluidos en cada pedido.
-  - `order_id`: Identificador único del pedido.
-  - `product_id`: Identificador único del producto.
-  - `add_to_cart_order`: Orden en que el artículo fue añadido al carrito.
-  - `reordered`: 0 si el producto no se había pedido antes, 1 si se había pedido.
+#### B. Distribuciones y Productos Populares
+- **Comparación entre Miércoles y Sábados**: Análisis de las diferencias en la hora del día en que se hacen pedidos en miércoles y sábados.
+- **Distribución del Número de Pedidos por Cliente**: Visualización de cuántos pedidos realizan los clientes en total.
+- **Productos Más Populares**: Identificación de los 20 productos más frecuentemente pedidos.
 
-- **`aisles.csv`**: Información sobre las categorías de pasillos de víveres.
-  - `aisle_id`: Identificador único del pasillo.
-  - `aisle`: Nombre del pasillo.
+#### C. Análisis de Reordenes y Primeros Artículos en el Carrito
+- **Distribución de Artículos por Pedido**: Análisis de cuántos artículos se incluyen típicamente en un pedido.
+- **Productos Reordenados**: Identificación de los 20 productos más frecuentemente reordenados.
+- **Proporción de Reordenes por Producto**: Cálculo de la proporción de veces que un producto es reordenado.
+- **Proporción de Reordenes por Cliente**: Análisis de la frecuencia con que los clientes reordenan productos.
+- **Primeros Artículos en el Carrito**: Identificación de los 20 productos que más veces se añaden primero al carrito de compras.
 
-- **`departments.csv`**: Información sobre los departamentos de víveres.
-  - `department_id`: Identificador único del departamento.
-  - `department`: Nombre del departamento.
+## Conclusión General
 
-## Instrucciones para Completar el Proyecto
-
-### Paso 1: Exploración de Datos
-
-- Abre los archivos de datos y examina el contenido general de cada tabla.
-- Ten en cuenta los formatos no estándar de los archivos CSV. Establece los argumentos adecuados en `pd.read_csv()` para leer los datos correctamente.
-- Para `order_products.csv`, usa `show_counts=True` al llamar a `info()` para imprimir los recuentos no nulos si el DataFrame es muy grande.
-
-### Paso 2: Preprocesamiento de Datos
-
-- Verifica y corrige los tipos de datos, asegurándote de que las columnas de ID sean numéricas.
-- Identifica y completa los valores ausentes.
-- Identifica y elimina los valores duplicados.
-- Explica los problemas encontrados, cómo los abordaste y por qué elegiste esos métodos.
-
-### Paso 3: Análisis Exploratorio de Datos
-
-#### [A] Análisis Básico
-
-1. Verifica la validez de las columnas `order_hour_of_day` y `order_dow`.
-2. Crea un gráfico que muestre el número de pedidos por hora del día.
-3. Crea un gráfico que muestre la cantidad de pedidos por día de la semana.
-4. Crea un gráfico que muestre el tiempo que las personas esperan para hacer su próximo pedido. Comenta los valores mínimos y máximos.
-
-#### [B] Análisis Comparativo
-
-1. Compara las distribuciones de `order_hour_of_day` entre miércoles y sábados mediante histogramas.
-2. Traza la distribución del número de pedidos por cliente.
-3. Identifica los 20 productos más frecuentemente pedidos (incluye ID y nombre).
-
-#### [C] Análisis Detallado
-
-1. Determina el número promedio de artículos por pedido y su distribución.
-2. Identifica los 20 artículos más frecuentemente reordenados (incluye nombres e ID).
-3. Calcula la proporción de reordenes para cada producto (tabla con ID, nombre y proporción).
-4. Calcula la proporción de productos reordenados por cada cliente.
-5. Identifica los 20 artículos que más frecuentemente se añaden primero al carrito (incluye ID, nombre y número de veces).
+Este análisis proporciona una visión detallada de los patrones de compra de los clientes de Instacart, lo que puede ser útil para optimizar estrategias de marketing y mejorar la experiencia del usuario en la plataforma.
 
