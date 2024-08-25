@@ -76,8 +76,3 @@ El conjunto de datos se compone de los siguientes archivos:
 4. Calcula la proporción de productos reordenados por cada cliente.
 5. Identifica los 20 artículos que más frecuentemente se añaden primero al carrito (incluye ID, nombre y número de veces).
 
-## Entrega
-
-Una vez completado el análisis, envía tu trabajo al equipo de revisión en la plataforma para recibir retroalimentación. Realiza los cambios necesarios según los comentarios recibidos y vuelve a enviar la nueva versión. Es posible que recibas más comentarios, lo cual es parte del proceso de revisión.
-
-Tu proyecto se considerará completado una vez que el equipo de revisión lo apruebe.
